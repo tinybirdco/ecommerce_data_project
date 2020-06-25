@@ -1,0 +1,12 @@
+NODE endpoint
+DESCRIPTION >
+    returns top 10 products given start and end dates
+SQL >
+    %
+    select
+        date,
+        topKMerge(10)(top_10) as top_10
+    from top_product_per_day
+    where date between {{Date(start)}} and {{Date(end)}}
+    group by date
+
