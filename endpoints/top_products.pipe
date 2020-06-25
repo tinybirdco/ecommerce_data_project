@@ -1,0 +1,12 @@
+
+NODE endpoint
+DESCRIPTION >
+    returns top 10 products for the last week
+SQL >
+    select
+        date,
+        topKMerge(10)(top_10) as top_10
+    from top_product_per_day
+    where date > today() - interval 7 day
+    group by date
+

@@ -1,0 +1,6 @@
+
+SCHEMA >
+    id String,
+    color String,
+    section String,
+    description String

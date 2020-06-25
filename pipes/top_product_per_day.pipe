@@ -1,0 +1,25 @@
+
+NODE only_buy_events
+DESCRIPTION >
+    filters all the buy events
+
+SQL >
+    SELECT
+        toDate(timestamp) date,
+        product,
+        JSONExtractFloat(json, 'price') as price
+    FROM events
+    where action = 'buy'
+
+
+NODE top_per_day
+SQL >
+   SELECT date,
+          topKState(10)(product) top_10,
+          sumState(price) total_sales
+   from only_buy_events
+   group by date
+
+TYPE materialized
+ENGINE Aggregating
+SORTING_KEY date
