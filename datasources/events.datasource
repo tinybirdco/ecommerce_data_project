@@ -12,6 +12,7 @@ SCHEMA >
     action String,
     json String
 
-ORDER timestamp
+ENGINE MergeTree
+SORTING_KEY timestamp
 
 
