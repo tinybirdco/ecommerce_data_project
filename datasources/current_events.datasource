@@ -1,0 +1,14 @@
+
+DESCRIPTION >
+
+SCHEMA >
+    timestamp DateTime,
+    product String,
+    user_id String,
+    action String,
+    json String
+
+ENGINE MergeTree
+SORTING_KEY timestamp
+
+

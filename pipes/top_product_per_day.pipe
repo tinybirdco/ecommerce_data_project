@@ -8,7 +8,7 @@ SQL >
         toDate(timestamp) date,
         product,
         JSONExtractFloat(json, 'price') as price
-    FROM events
+    FROM current_events
     where action = 'buy'
 
 

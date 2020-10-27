@@ -6,7 +6,7 @@ SQL >
         product,
         joinGet('products_join_by_id', 'color', product) as color,
         JSONExtractFloat(json, 'price') as price
-    FROM events
+    FROM current_events
     where action = 'buy'
 
 NODE endpoint

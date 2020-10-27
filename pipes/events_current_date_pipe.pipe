@@ -1,0 +1,16 @@
+
+NODE events_current_date
+DESCRIPTION >
+    creates a new events datasource with current dates for testing purposes
+
+SQL >
+    SELECT
+        now() as timestamp,
+        product,
+        user_id,
+        action,
+        json
+    FROM events
+
+TYPE materialized
+DATASOURCE current_events
