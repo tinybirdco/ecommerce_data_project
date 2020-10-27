@@ -1,0 +1,35 @@
+name: tinybird
+
+on:
+  push:
+
+jobs:
+  run_tests_tinybird:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-python@v1
+      with:
+        python-version: '3.7'
+        architecture: 'x64'
+
+    - name: pip packages
+      run: pip install tinybird-cli
+
+    - name: version
+      run: tb --version
+
+    - name: drop-prev-resources
+      run: tb drop-prefix idxpilot_${GITHUB_REF##*/}
+      env:
+        TOKEN: ${{ secrets.tb_token }}
+
+    - name: push-project
+      run: tb push --push-deps --prefix idxpilot_${GITHUB_REF##*/} --fixtures
+      env:
+        TOKEN: ${{ secrets.tb_token }}
+
+    - name: tests
+      run: ./scripts/exec_test.sh idxpilot_${GITHUB_REF##*/}
+      env:
+        TOKEN: ${{ secrets.tb_token }}

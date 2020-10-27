@@ -1,0 +1,2 @@
+tb pipe data $1__top_products --day 7 --format CSV
+
