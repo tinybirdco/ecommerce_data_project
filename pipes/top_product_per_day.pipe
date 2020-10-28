@@ -21,5 +21,4 @@ SQL >
    group by date
 
 TYPE materialized
-ENGINE AggregatingMergeTree
-SORTING_KEY date
+DATASOURCE top_products_view

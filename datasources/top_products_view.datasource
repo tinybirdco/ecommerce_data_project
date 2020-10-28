@@ -1,0 +1,7 @@
+SCHEMA >
+    date Date,
+    top_10 AggregateFunction(topK(10), String),
+    total_sales AggregateFunction(sum, Float64)
+
+ENGINE AggregatingMergeTree
+SORTING_KEY date
