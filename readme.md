@@ -19,3 +19,7 @@ tb push --push-deps --fixtures
 
 Ready to use in your tinybird account
 
+## Sample data
+
+~2M products -> https://storage.googleapis.com/tinybird-downloads/data/products.csv
+
