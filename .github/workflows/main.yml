@@ -20,7 +20,7 @@ jobs:
       run: tb --version
       
     - name: drop-prev-resources
-      run: export prefix=${GITHUB_REF##*/} && tb --token $TOKEN drop-prefix ci_${prefix//-/_} >/dev/null 2>&1
+      run: export prefix=${GITHUB_REF##*/} && tb --token $TOKEN drop-prefix ci_${prefix//-/_}
       env:
         TOKEN: ${{ secrets.tb_token }}
 
