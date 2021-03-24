@@ -20,12 +20,12 @@ jobs:
       run: tb --version
 
     - name: drop-prev-resources
-      run: export prefix=${GITHUB_REF##*/} && tb drop-prefix ci_${prefix//-/_}
+      run: export prefix=${GITHUB_REF##*/} && tb drop-prefix ci_${prefix//-/_} --token $TOKEN
       env:
         TOKEN: ${{ secrets.tb_token }}
 
     - name: push-project
-      run: export prefix=${GITHUB_REF##*/} && tb push --push-deps --prefix ci_${prefix//-/_} --fixtures
+      run: export prefix=${GITHUB_REF##*/} && tb push --push-deps --prefix ci_${prefix//-/_} --fixtures --token $TOKEN
       env:
         TOKEN: ${{ secrets.tb_token }}
 
