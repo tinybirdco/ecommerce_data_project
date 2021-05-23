@@ -9,6 +9,6 @@ SCHEMA >
     json String
 
 ENGINE MergeTree
-SORTING_KEY timestamp
+ENGINE_SORTING_KEY timestamp
 
 

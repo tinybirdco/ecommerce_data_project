@@ -4,4 +4,4 @@ SCHEMA >
     total_sales AggregateFunction(sum, Float64)
 
 ENGINE AggregatingMergeTree
-SORTING_KEY date
+ENGINE_SORTING_KEY date
