@@ -1,9 +1,9 @@
 
 DESCRIPTION >
     # Events from users
-    this contains all the events produced by kafka, there are 4 fixed columns 
+    this contains all the events produced by Kafka, there are 4 fixed columns 
     plus a `json` column which contains the rest of the data for that event.
-    See [documentation](url_for_docs) for the different evetns.
+    See [documentation](url_for_docs) for the different events.
 
 SCHEMA >
     timestamp DateTime,
