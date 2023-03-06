@@ -8,15 +8,16 @@ SQL >
         toDate(timestamp) date,
         product,
         JSONExtractFloat(json, 'price') as price
-    FROM current_events
+    FROM events
     where action = 'buy'
 
 
 NODE top_per_day
 SQL >
-   SELECT date,
-          topKState(10)(product) top_10,
-          sumState(price) total_sales
+   SELECT 
+        date,
+        topKState(10)(product) top_10,
+        sumState(price) total_sales
    from only_buy_events
    group by date
 
