@@ -54,7 +54,7 @@ jobs:
             --fixtures
 
       - name: Running tests
-        run: ../scripts/exec_test.sh 
+        run: ./scripts/exec_test.sh 
         env:
           TB_TOKEN: ${{ env.ADMIN_TOKEN }} 
 
