@@ -6,7 +6,7 @@ on:
 
 env:
   ADMIN_TOKEN: ${{ secrets.ADMIN_TOKEN }}
-  TB_HOST: ${{ secrets.TB_HOST }}
+  TB_HOST: https://api.tinybird.co
   USER_TOKEN: ${{ secrets.USER_TOKEN }}
   WORKSPACE_NAME: tmp_${GITHUB_RUN_ID}
   
