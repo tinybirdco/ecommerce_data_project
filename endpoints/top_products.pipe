@@ -4,6 +4,7 @@ DESCRIPTION >
     returns top 10 products for the last week
     
 SQL >
+    %
     select
         date,
         topKMerge(10)(top_10) as top_10
