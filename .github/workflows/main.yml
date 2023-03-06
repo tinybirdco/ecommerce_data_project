@@ -8,7 +8,6 @@ env:
   ADMIN_TOKEN: ${{ secrets.ADMIN_TOKEN }}
   TB_HOST: https://api.tinybird.co
   USER_TOKEN: ${{ secrets.USER_TOKEN }}
-  WORKSPACE_NAME: tmp_${GITHUB_RUN_ID}
   
 jobs:
   run_validation_tests:
@@ -27,14 +26,17 @@ jobs:
         run: tb --version       
 
       - name: Check all the files
-        run: tb check  
+        run: tb check
+
+      - name: Define workspace name
+        run: echo "WORKSPACE_NAME=tmp_${GITHUB_RUN_ID}" >> $GITHUB_ENV
 
       - name: Create new workspace
         run: |
           tb \
           --host $TB_HOST \
           --token $ADMIN_TOKEN \
-          workspace create $WORKSPACE_NAME \
+          workspace create ${{ env.WORKSPACE_NAME }} \
           --user_token $USER_TOKEN
 
       - name: Get admin token from new workspace
@@ -62,7 +64,7 @@ jobs:
           tb \
           --host $TB_HOST \
           --token $ADMIN_TOKEN \
-          workspace delete $WORKSPACE_NAME  \
+          workspace delete ${{ env.WORKSPACE_NAME }} \
           --user_token $USER_TOKEN \
           --yes
   
