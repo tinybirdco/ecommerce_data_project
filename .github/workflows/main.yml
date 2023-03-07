@@ -42,7 +42,7 @@ jobs:
       - name: Get admin token from new workspace
         run: echo "ADMIN_TOKEN=$(curl -s "${TB_HOST}/v0/user/workspaces?token=${USER_TOKEN}" | jq -rc '.workspaces[] | select(.role=="admin" and .name=="${{ env.WORKSPACE_NAME }}").token')" >> $GITHUB_ENV     
 
-      - name: Create datasources
+      - name: Create resources
         run: |
           tb \
             --host $TB_HOST \
