@@ -6,12 +6,13 @@ SQL >
         product,
         joinGet('products_join_by_id', 'color', product) as color,
         JSONExtractFloat(json, 'price') as price
-    FROM current_events
+    FROM events
     where action = 'buy'
 
 NODE endpoint
 DESCRIPTION >
     return sales for a product with color filter
+    
 SQL >
     %
     select date, sum(price) total_sales
