@@ -11,5 +11,6 @@ SQL >
         arraySort(x -> x, topKMerge(10)(top_10)) as top_10
     from top_product_per_day
     where date BETWEEN {{Date(date_start)}} AND {{Date(date_end)}}
+    and action = 'buy'
     group by date
 
