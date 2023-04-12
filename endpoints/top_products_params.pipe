@@ -8,7 +8,7 @@ SQL >
     select
         date,
         topKMerge(10)(top_10) as top_10
-    from top_product_per_day
+    from top_products_view
     where date between {{Date(start)}} and {{Date(end)}}
     and action = 'buy'
     group by date
