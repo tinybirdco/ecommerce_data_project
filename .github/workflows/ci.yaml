@@ -44,7 +44,7 @@ jobs:
           tb \
           --host $TB_HOST \
           --token $ADMIN_TOKEN \
-          branch create ecommerce_${GITHUB_RUN_ID} \
+          branch create tmp_ci_${GITHUB_RUN_ID} \
           --last-partition --wait
 
       - name: List changes with main branch
@@ -98,5 +98,5 @@ jobs:
           tb \
           --host $TB_HOST \
           --token $ADMIN_TOKEN \
-          branch rm wask_ci_branch_${GITHUB_RUN_ID} \
+          branch rm tmp_ci_${GITHUB_RUN_ID} \
           --yes
