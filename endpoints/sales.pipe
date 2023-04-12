@@ -1,3 +1,5 @@
+TOKEN read_token READ
+
 NODE only_buy_events
 SQL >
 

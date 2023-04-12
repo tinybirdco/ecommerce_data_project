@@ -1,3 +1,5 @@
+TOKEN read_token READ
+
 NODE endpoint
 DESCRIPTION >
     returns top 10 products given start and end dates

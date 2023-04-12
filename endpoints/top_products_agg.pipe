@@ -1,3 +1,5 @@
+TOKEN read_token READ
+
 NODE top_products_day
 SQL >
    SELECT date,
