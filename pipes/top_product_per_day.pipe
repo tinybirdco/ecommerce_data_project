@@ -1,9 +1,9 @@
-
 NODE only_buy_events
 DESCRIPTION >
     filters all the buy events
 
 SQL >
+
     SELECT
         toDate(timestamp) date,
         product,
@@ -12,14 +12,18 @@ SQL >
     where action = 'buy'
 
 
+
 NODE top_per_day
 SQL >
-   SELECT 
-        date,
-        topKState(10)(product) top_10,
-        sumState(price) total_sales
-   from only_buy_events
-   group by date
+
+    SELECT 
+         date,
+         topKState(10)(product) top_10,
+         sumState(price) total_sales
+    from only_buy_events
+    group by date
 
 TYPE materialized
 DATASOURCE top_products_view
+
+
