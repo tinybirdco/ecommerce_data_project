@@ -1,18 +1,15 @@
-
 DESCRIPTION >
-    # Events from users
     this contains all the events produced by Kafka, there are 4 fixed columns 
     plus a `json` column which contains the rest of the data for that event.
     See [documentation](url_for_docs) for the different events.
 
 SCHEMA >
-    timestamp DateTime,
-    product String,
-    user_id String,
-    action String,
-    json String
+    `timestamp` DateTime,
+    `product` String,
+    `user_id` String,
+    `action` String,
+    `json` String
 
-ENGINE MergeTree
-ENGINE_SORTING_KEY timestamp
-
-
+ENGINE "MergeTree"
+ENGINE_PARTITION_KEY "toYear(timestamp)"
+ENGINE_SORTING_KEY "timestamp"

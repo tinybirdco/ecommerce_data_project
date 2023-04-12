@@ -1,10 +1,9 @@
 
 SCHEMA >
-    id String,
-    color String,
-    section String,
-    description String
+    `id` String,
+    `color` String,
+    `section` String,
+    `description` String
 
-# this creates a join table ready to accessby id
-# using joinGet('products_join_by_id', 'color', id)
-KEY id
+ENGINE "MergeTree"
+ENGINE_SORTING_KEY "id, color, section, description"
