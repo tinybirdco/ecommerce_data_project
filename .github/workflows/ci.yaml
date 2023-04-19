@@ -81,7 +81,7 @@ jobs:
           if [ -f "$REGRESSION_FILE" ]; then
             tb branch regression-tests -f ./deployment/${{env.GIT_BRANCH}}-regression.yaml --wait
           else
-            tb branch regression-tests --wait ${{ steps.regression_labels.outputs.labels }}
+            tb branch regression-tests coverage .* --wait ${{ steps.regression_labels.outputs.labels }}
           fi
 
 
