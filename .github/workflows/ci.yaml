@@ -12,7 +12,6 @@ on:
 env:
   ADMIN_TOKEN: ${{ secrets.ADMIN_TOKEN }}
   TB_HOST: https://api.tinybird.co
-  REGRESSION_ARGS: ${{ github.event.pull_request.labels.*.name }}
   
 jobs:
   create_workspace:
@@ -68,14 +67,21 @@ jobs:
         run: |
           tb test run -v
 
+      - name: Get regression labels
+        id: regression_labels
+        uses: SamirMarin/get-labels-action@v0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          label_key: regression
+
       - name: Run pipe regression tests
         run: |
           REGRESSION_FILE=./deployment/${{env.GIT_BRANCH}}-regression.yaml
-          echo ${REGRESSION_ARGS}
+          echo ${{ steps.regression_labels.outputs.labels }}
           if [ -f "$REGRESSION_FILE" ]; then
             tb branch regression-tests -f ./deployment/${{env.GIT_BRANCH}}-regression.yaml --wait
           else
-            tb branch regression-tests --wait "${REGRESSION_ARGS[@]}"
+            tb branch regression-tests --wait ${{ steps.regression_labels.outputs.labels }}
           fi
 
 
