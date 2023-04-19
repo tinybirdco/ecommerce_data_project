@@ -5,12 +5,14 @@ on:
   pull_request:
     branches:
       - master
+    types: [opened, reopened, labeled, unlabeled, synchronize]
     paths-ignore:
       - '.github/**'
 
 env:
   ADMIN_TOKEN: ${{ secrets.ADMIN_TOKEN }}
   TB_HOST: https://api.tinybird.co
+  REGRESSION_ARGS: ${{ github.event.pull_request.labels.*.name }}
   
 jobs:
   create_workspace:
@@ -69,10 +71,11 @@ jobs:
       - name: Run pipe regression tests
         run: |
           REGRESSION_FILE=./deployment/${{env.GIT_BRANCH}}-regression.yaml
+          echo ${REGRESSION_ARGS}
           if [ -f "$REGRESSION_FILE" ]; then
             tb branch regression-tests -f ./deployment/${{env.GIT_BRANCH}}-regression.yaml --wait
           else
-            tb branch regression-tests --wait
+            tb branch regression-tests --wait "${REGRESSION_ARGS[@]}"
           fi
 
 
