@@ -5,6 +5,7 @@ on:
   pull_request:
     branches:
       - master
+    types: [opened, reopened, labeled, unlabeled, synchronize]
     paths-ignore:
       - '.github/**'
 
@@ -56,7 +57,7 @@ jobs:
           if [ -f "$PUSH_FILE" ]; then
             ./deployment/${{env.GIT_BRANCH}}-push.sh
           else
-            ./deployment/default-push.sh
+            tb push --push-deps --only-changes --force --populate --wait
           fi
 
       - name: List changes with branch (should be empty)
@@ -66,14 +67,18 @@ jobs:
         run: |
           tb test run -v
 
+      - name: Get regression labels
+        id: regression_labels
+        uses: SamirMarin/get-labels-action@v0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          label_key: regression
+
       - name: Run pipe regression tests
         run: |
           REGRESSION_FILE=./deployment/${{env.GIT_BRANCH}}-regression.yaml
-          if [ -f "$REGRESSION_FILE" ]; then
-            tb branch regression-tests -f ./deployment/${{env.GIT_BRANCH}}-regression.yaml --wait
-          else
-            tb branch regression-tests --wait
-          fi
+          echo ${{ steps.regression_labels.outputs.labels }}
+          tb branch regression-tests coverage --wait $(echo ${{ steps.regression_labels.outputs.labels }} | tr , ' ')
 
 
   cleanup:
