@@ -1,0 +1,18 @@
+- no_negative_sales:
+    max_bytes_read: null
+    max_time: null
+    sql: |
+        SELECT
+          date,
+          sumMerge(total_sales) total_sales
+        FROM top_products_view
+        GROUP by date
+        HAVING total_sales < 0
+- products_by_date:
+    max_bytes_read: null
+    max_time: null
+    sql: |
+        SELECT count(), date
+        FROM top_products
+        GROUP BY date
+        HAVING count() < 0
