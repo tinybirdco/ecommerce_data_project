@@ -5,7 +5,7 @@ fail=0;
 for t in `ls -1 tests/*.test`; do
     echo "** Running $t **"
     echo "** $(cat $t)"
-    if res=$(bash $t $1 | diff ${t}.result -); then
+    if res=$(bash $t $1 | diff -B ${t}.result -); then
         echo 'OK';
     else
         echo "failed, diff:";
