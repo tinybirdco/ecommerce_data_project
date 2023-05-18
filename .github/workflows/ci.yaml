@@ -9,7 +9,7 @@ on:
 
 jobs:
   ci_branching:
-    uses: tinybirdco/ci/.github/workflows/ci_branching.yml@v1.0.0
+    uses: tinybirdco/ci/.github/workflows/ci_branching.yml@v1.0.2
     with:
       tb_host: https://api.tinybird.co
     secrets: 
