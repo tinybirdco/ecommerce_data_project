@@ -6,4 +6,5 @@ SQL >
           topKMerge(10)(top_10) top_10,
           sumMerge(total_sales) total_sales
    FROM top_products_view
+   where action = 'buy'
    GROUP by date

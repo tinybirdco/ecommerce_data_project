@@ -1,0 +1,14 @@
+name: Tinybird - CD Workflow
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - master
+
+jobs:
+  push_changes:
+    uses: tinybirdco/ci/.github/workflows/cd.yml@main
+    secrets: 
+      admin_token: ${{ secrets.ADMIN_TOKEN }}
+      tb_host: https://api.tinybird.co

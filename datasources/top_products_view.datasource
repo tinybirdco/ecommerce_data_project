@@ -1,9 +1,11 @@
+VERSION 1
 
 SCHEMA >
     `date` Date,
+    `action` String,
     `top_10` AggregateFunction(topK(10), String),
     `total_sales` AggregateFunction(sum, Float64)
 
 ENGINE "AggregatingMergeTree"
 ENGINE_PARTITION_KEY "toYear(date)"
-ENGINE_SORTING_KEY "date"
+ENGINE_SORTING_KEY "date, action"
