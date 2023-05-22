@@ -2,6 +2,7 @@ TOKEN read_token READ
 
 NODE top_products_day
 SQL >
+   %
    SELECT date,
           topKMerge(10)(top_10) top_10,
           sumMerge(total_sales) total_sales
