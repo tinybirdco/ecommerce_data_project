@@ -10,7 +10,6 @@ on:
 jobs:
   ci_branching:
     uses: tinybirdco/ci/.github/workflows/ci.yml@main
-    with:
-      tb_host: https://api.tinybird.co
     secrets: 
       admin_token: ${{ secrets.ADMIN_TOKEN }}
+      tb_host: https://api.tinybird.co
