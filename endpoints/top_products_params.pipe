@@ -9,7 +9,7 @@ SQL >
         date,
         topKMerge(10)(top_10) as top_10
     from top_products_view
-    where date between {{Date(start)}} and {{Date(end)}}
+    where date between {{Date(start, '2020-04-24')}} and {{Date(end, '2020-04-24')}}
     and action = 'buy'
     group by date
 

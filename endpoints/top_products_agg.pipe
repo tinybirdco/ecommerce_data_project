@@ -7,4 +7,7 @@ SQL >
           sumMerge(total_sales) total_sales
    FROM top_products_view
    where action = 'buy'
+   {% if defined(date_start) and defined(date_end) %}
+    and date BETWEEN {{Date(date_start, '2020-04-24')}} AND {{Date(date_end, '2020-04-24')}}
+   {% end %}
    GROUP by date
