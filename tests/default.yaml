@@ -22,10 +22,9 @@
     sql: |
         SELECT count()
         FROM top_products_agg
-        GROUP BY date
-        HAVING count() < 0
+        HAVING count() > 0
     pipe:
       name: top_products_agg
       params:
-        date_start: '2020-04-24'
-        date_end: '2020-04-24'
+        date_start: '2019-04-24'
+        date_end: '2019-04-24'
