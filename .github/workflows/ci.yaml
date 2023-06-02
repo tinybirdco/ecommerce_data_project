@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   pull_request:
     branches:
-      - master
+      - main
     types: [opened, reopened, labeled, unlabeled, synchronize]
 
 concurrency: ${{ github.workflow }}-${{ github.event.pull_request.number }}
