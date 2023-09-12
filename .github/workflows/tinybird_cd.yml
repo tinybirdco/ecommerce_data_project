@@ -1,0 +1,23 @@
+
+    ##################################################
+    ###   Visit https://github.com/tinybirdco/ci   ###
+    ###   for more details or custom CI/CD         ###
+    ##################################################
+
+    name: Tinybird - CD Workflow
+
+    on:
+      workflow_dispatch:
+      push:
+        branches:
+          - main
+          - master
+    jobs:
+      cd:  # deploy changes to workspace 'ecommerce_data_project'
+        uses: tinybirdco/ci/.github/workflows/cd.yml@v1.1.7
+        with:
+          tb_deploy: false
+          data_project_dir: .
+        secrets:
+          admin_token: ${{ secrets.ADMIN_TOKEN }}  # set admin token associated to an account in GitHub secrets
+          tb_host: https://api.tinybird.co
