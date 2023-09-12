@@ -6,13 +6,15 @@
           date,
           sumMerge(total_sales) total_sales
         FROM top_products_view
-        GROUP by date
+        GROUP BY date
         HAVING total_sales < 0
 - products_by_date:
     max_bytes_read: null
     max_time: null
     sql: |
-        SELECT count(), date
+        SELECT 
+          date,
+          count() total
         FROM top_products
         GROUP BY date
-        HAVING count() < 0
+        HAVING total < 0
