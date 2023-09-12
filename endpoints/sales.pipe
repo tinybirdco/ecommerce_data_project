@@ -1,4 +1,4 @@
-TOKEN read_token READ
+TOKEN "read_token" READ
 
 NODE only_buy_events
 SQL >
@@ -21,9 +21,9 @@ DESCRIPTION >
 SQL >
 
     %
-        select date, sum(price) total_sales
-        from only_buy_events
-        where color in {{Array(colors, 'black')}}
-        group by date
+            select date, sum(price) total_sales
+            from only_buy_events
+            where color in {{Array(colors, 'black')}}
+            group by date
 
 

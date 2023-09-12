@@ -1,16 +1,18 @@
-TOKEN read_token READ
+TOKEN "read_token" READ
 
 NODE endpoint
 DESCRIPTION >
     returns top 10 products for the last week
-    
+
 SQL >
+
     %
-    select
-        date,
-        arraySort(x -> x, topKMerge(10)(top_10)) as top_10
-    from top_products_view
-    where date BETWEEN {{Date(date_start)}} AND {{Date(date_end)}}
-    and action = 'buy'
-    group by date
+        select
+            date,
+            arraySort(x -> x, topKMerge(10)(top_10)) as top_10
+        from top_products_view
+        where date BETWEEN {{Date(date_start)}} AND {{Date(date_end)}}
+        and action = 'buy'
+        group by date
+
 

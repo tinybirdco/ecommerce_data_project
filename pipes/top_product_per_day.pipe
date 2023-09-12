@@ -1,5 +1,4 @@
 VERSION 1
-
 NODE only_buy_events
 DESCRIPTION >
     filters all the buy events
