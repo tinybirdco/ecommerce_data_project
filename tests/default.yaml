@@ -18,3 +18,8 @@
         FROM top_products
         GROUP BY date
         HAVING total < 0
+    pipe:
+      name: top_products
+      params:
+        date_start: '2020-04-24'
+        date_end: '2020-04-25'
