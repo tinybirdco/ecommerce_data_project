@@ -12,7 +12,7 @@ source .venv/bin/activate
 pip install tinybird-cli
 ```
 
-Create a folder in your computer and then run the following commands to create all the Data Sources and Pipes and upload some sample data:
+Then run the following commands to create all the Data Sources and Pipes and upload some sample data:
 
 ```bash
 tb auth
