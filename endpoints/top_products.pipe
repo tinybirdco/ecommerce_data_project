@@ -11,5 +11,5 @@ SQL >
     where
         date BETWEEN {{ Date(date_start, '2020-04-23') }}
         AND {{ Date(date_end, '2020-04-24') }}
-        and action = 'buy'
+        --and action = 'buy'
     group by date
