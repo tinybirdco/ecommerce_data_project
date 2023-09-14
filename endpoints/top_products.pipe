@@ -9,7 +9,7 @@ SQL >
     select date, arraySort(x -> x, topKMerge(10)(top_10)) as top_10
     from top_products_view
     where
-        date BETWEEN {{ Date(date_start) }}
-        AND {{ Date(date_end) }}
+        date BETWEEN {{ Date(date_start, '2020-04-23') }}
+        AND {{ Date(date_end, '2020-04-24') }}
         and action = 'buy'
     group by date
