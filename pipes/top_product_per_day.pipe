@@ -1,4 +1,4 @@
-VERSION 1
+VERSION 2
 NODE only_buy_events
 DESCRIPTION >
     filters all the buy events
@@ -9,7 +9,8 @@ SQL >
         toDate(timestamp) date,
         product,
         JSONExtractFloat(json, 'price') as price,
-        action
+        action,
+        user_id
     FROM events
 
 
@@ -21,9 +22,10 @@ SQL >
          date,
          action,
          topKState(10)(product) top_10,
-         sumState(price) total_sales
+         sumState(price) total_sales,
+         user_id
     from only_buy_events
-    group by date, action
+    group by date, action, user_id
 
 TYPE materialized
 DATASOURCE top_products_view
