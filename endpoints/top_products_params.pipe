@@ -9,7 +9,7 @@ SQL >
     %
         select
             date,
-            topKMerge(10)(top_10) as top_10
+            arraySort(x -> x, topKMerge(10)(top_10)) as top_10
         from top_products_view
         where date between {{Date(start)}} and {{Date(end)}}
         and action = 'buy'
