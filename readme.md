@@ -16,7 +16,7 @@ Then run the following commands to create all the Data Sources and Pipes and upl
 
 ```bash
 tb auth
-tb push --push-deps --fixtures
+tb init --git
 ```
 
 You can append more products data by doing:
