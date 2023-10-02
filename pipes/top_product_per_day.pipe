@@ -23,6 +23,7 @@ SQL >
          topKState(10)(product) top_10,
          sumState(price) total_sales
     from only_buy_events
+    where date > now() - interval 30 day
     group by date, action
 
 TYPE materialized
