@@ -1,3 +1,5 @@
+TOKEN "append data" APPEND
+
 
 SCHEMA >
     `id` String,
