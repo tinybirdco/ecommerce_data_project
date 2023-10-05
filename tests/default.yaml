@@ -14,7 +14,7 @@
     sql: |
         SELECT 1
           FROM top_products
-        HAVING COUNT() = 0
+        HAVING count() = 0
     pipe:
       name: top_products
       params:
