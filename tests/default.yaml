@@ -12,14 +12,11 @@
     max_bytes_read: null
     max_time: null
     sql: |
-        SELECT 
-          date,
-          count() total
-        FROM top_products
-        GROUP BY date
-        HAVING total < 0
+        SELECT 1
+          FROM top_products
+        HAVING count() = 0
     pipe:
       name: top_products
       params:
-        date_start: '2020-04-24'
-        date_end: '2020-04-25'
+        date_start: '2020-01-01'
+        date_end: '2020-12-31'
